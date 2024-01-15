@@ -53,7 +53,7 @@
     </header>
 
     <main>
-        <?php echo $content; ?>
+        <?php echo $content;?>
     </main>
 </body>
 </html>

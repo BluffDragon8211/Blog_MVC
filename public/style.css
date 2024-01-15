@@ -74,12 +74,35 @@ nav .hoverLink:hover .hidden {
     transition: all .5s ease;
 }
 
+.red {
+    color: red !important;
+}
+
+.yellow {
+    color: rgb(255, 217, 0);
+}
+
 main {
-    flex: 1;
+    flex-direction: column;
     display: flex;
-    align-items: center;
-    justify-content: center;
     margin-left: 90px;
+}
+
+main article {
+    width: 520px;
+    margin: 20px;
+    padding: 10px;
+    background-color: #013a6b;
+    border-radius: 10px;
+    overflow-wrap: break-word;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+main article img {
+    max-width: 500px;
 }
 
 /* CSS Form Register */

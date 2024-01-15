@@ -2,6 +2,7 @@
     namespace BlogMvc\Controllers;
 
     use BlogMvc\Models\ArticleManager;
+    use BlogMvc\Models\UserManager;
     use BlogMvc\Validator;
     class  ArticleController{
         private $manager;
@@ -18,6 +19,11 @@
 
         public function showAllArticles() {
             $articles = $this->manager->getAll();
+            foreach ($articles as $article) {
+                $um = new UserManager();
+                $name = $um->getById($article->getAuteur());
+                $article->setAuteurName($name["Login"]);
+            }
             require VIEWS."Blog/affiche.php";
         }
 
@@ -45,5 +51,14 @@
             }
         }
 
+        public function delete($id) {
+            $article = $this->manager->getById($id);
+            if(isset($article)) {
+                if($article["Auteur"] === $_SESSION["user"]["id"]) {
+                    $this->manager->delete($id);
+                }
+            }
+            header("Location: /");
+        }
     }
 ?>

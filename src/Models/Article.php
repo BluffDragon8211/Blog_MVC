@@ -8,6 +8,7 @@
         private $Image;
         private $Date;
         private $Auteur;
+        private $auteurName;
 
         public function getId() {
             return $this->Id;
@@ -55,6 +56,14 @@
 
         public function setAuteur($auteur) {
             $this->Auteur = $auteur;
+        }
+
+        public function getAuteurName() {
+            return $this->auteurName;
+        }
+
+        public function setAuteurName($name) {
+            $this->auteurName = $name;
         }
     }
 ?>

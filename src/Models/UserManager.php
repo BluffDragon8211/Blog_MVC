@@ -16,8 +16,16 @@ class UserManager {
         return $this->bdd;
     }
 
+    public function getById($id) {
+        $stmt = $this->bdd->prepare("SELECT * FROM login_motdepasse WHERE Id_auteur = ?");
+            $stmt->execute(array(
+                $id
+            ));
+            return $stmt->fetch();
+    }
+
     public function find($username) {
-        $stmt = $this->bdd->prepare("SELECT * FROM login_motdepasse WHERE Login = ?");
+        $stmt = $this->bdd->prepare("SELECT * FROM login_motdepasse WHERE Login LIKE ?");
         $stmt->execute(array(
             $username
         ));

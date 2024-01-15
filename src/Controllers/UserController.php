@@ -41,12 +41,7 @@
                 if (empty($res)) {
                     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
                     $this->manager->store($password);
-
-                    $_SESSION["user"] = [
-                        "id" => $this->manager->getBdd()->lastInsertId(),
-                        "username" => $_POST["username"]
-                    ];
-                    header("Location: /");
+                    header("Location: /login/");
                 } else {
                     $_SESSION["error"]['username'] = "Le username choisi est déjà utilisé !";
                     header("Location: /register");

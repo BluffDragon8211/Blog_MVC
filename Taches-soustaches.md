@@ -1,5 +1,5 @@
 ## Tâches/sous-tâches
-- Temps global: 
+- Temps global: "14 h 45 min"
     - Mise en place: "30 min"
         - Utilisation noyau: "10 min"
         - Installation composer: "10 min"

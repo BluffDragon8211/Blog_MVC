@@ -14,6 +14,14 @@
             return $stmt->fetchAll(\PDO::FETCH_CLASS,"BlogMvc\Models\Article");
         }
 
+        public function getById($id) {
+            $stmt = $this->bdd->prepare("SELECT * FROM blog_poo WHERE Id = ?");
+            $stmt->execute(array(
+                $id
+            ));
+            return $stmt->fetch();
+        }
+
         public function maxId() {
             $stmt = $this->bdd->query("SELECT MAX(Id) AS Id FROM blog_poo");
             $blogid = $stmt->fetch();
@@ -27,6 +35,14 @@
                 $_POST["commentaire"],
                 $imgname,
                 date("Y-m-d"),
+                $_SESSION["user"]["id"]
+            ));
+        }
+
+        public function delete($id) {
+            $stmt = $this->bdd->prepare("DELETE FROM blog_poo WHERE Id = ? AND Auteur = ?");
+            $stmt->execute(array(
+                $id,
                 $_SESSION["user"]["id"]
             ));
         }
