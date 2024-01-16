@@ -68,6 +68,9 @@
             $article = $this->manager->getById($id);
             if(isset($article)) {
                 if($article["Auteur"] === $_SESSION["user"]["id"]) {
+                    if(file_exists("../public/images/".$article["Image"])) {
+                        unlink("../public/images/".$article["Image"]);
+                    }
                     $this->manager->delete($id);
                 }
             }
