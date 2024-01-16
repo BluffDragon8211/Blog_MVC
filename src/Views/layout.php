@@ -14,6 +14,7 @@
             <?php
                 if (!isset($_SESSION["user"]["username"])) {
                     ?>
+                        <a href="/" class="logo">LOGO</a>
                         <div class="hoverLink">
                             <a href="/" class="icon"><i class="fas fa-home"></i></a>
                             <p class="hidden">Accueil</p>

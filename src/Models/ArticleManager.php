@@ -10,7 +10,7 @@
         }
 
         public function getAll() {
-            $stmt = $this->bdd->query("SELECT * FROM blog_poo");
+            $stmt = $this->bdd->query("SELECT * FROM blog_poo ORDER BY Date DESC,Auteur,Titre");
             return $stmt->fetchAll(\PDO::FETCH_CLASS,"BlogMvc\Models\Article");
         }
 
@@ -43,6 +43,18 @@
             $stmt = $this->bdd->prepare("DELETE FROM blog_poo WHERE Id = ? AND Auteur = ?");
             $stmt->execute(array(
                 $id,
+                $_SESSION["user"]["id"]
+            ));
+        }
+
+        public function update($imgname) {
+            $stmt = $this->bdd->prepare("UPDATE blog_poo SET Titre = ?, Description = ?, Image = ?, Date = ? WHERE ID = ? AND AUTEUR = ?");
+            $stmt->execute(array(
+                $_POST["titre"],
+                $_POST["commentaire"],
+                $imgname,
+                date("Y-m-d"),
+                $_POST["articleId"],
                 $_SESSION["user"]["id"]
             ));
         }

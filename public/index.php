@@ -18,5 +18,6 @@ $router->get('/delete/:id/', "ArticleController@delete");
 $router->post('/login/', "UserController@login");
 $router->post('/register/', "UserController@register");
 $router->post('/insert/', "ArticleController@create");
+$router->post('/update/', "ArticleController@update");
 
 $router->run();

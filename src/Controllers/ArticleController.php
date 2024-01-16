@@ -14,7 +14,20 @@
         }
 
         public function showInsert() {
-            require VIEWS."Blog/insert.php";
+            if(isset($_SESSION["user"]["id"])) {
+                require VIEWS."Blog/insert.php";
+            } else {
+                require VIEWS."Auth/login.php";
+            }
+        }
+
+        public function showUpdate($id) {
+            if(isset($_SESSION["user"]["id"])) {
+                $article = $this->manager->getById($id);
+                require VIEWS."Blog/update.php";
+            } else {
+                require VIEWS."Auth/login.php";
+            }
         }
 
         public function showAllArticles() {
@@ -35,8 +48,8 @@
             $_POST["titre"] = escape($_POST["titre"]);
             $_POST["commentaire"] = escape($_POST["commentaire"]);
             $this->validator->validate([
-                "titre"=>["required", "min:2", "max:50", "alphaNumDash"],
-                "commentaire"=>["required", "min:2", "alphaNumDash"]
+                "titre"=>["required", "min:2", "max:50"],
+                "commentaire"=>["required", "min:2"]
             ]);
             $_SESSION['old'] = $_POST;
     
@@ -59,6 +72,36 @@
                 }
             }
             header("Location: /");
+        }
+
+        public function update() {
+            if (!isset($_SESSION["user"]["username"])) {
+                header("Location: /login");
+                die();
+            }
+            $_POST["titre"] = escape($_POST["titre"]);
+            $_POST["commentaire"] = escape($_POST["commentaire"]);
+            $this->validator->validate([
+                "titre"=>["required", "min:2", "max:50"],
+                "commentaire"=>["required", "min:2"]
+            ]);
+            $_SESSION['old'] = $_POST;
+    
+            if (!$this->validator->errors()) {
+                $imgname = $_POST["imgname"];
+                if(strlen($_FILES["img"]["name"]) > 0) {
+                    if(file_exists("../public/images/".$imgname)) {
+                        unlink("../public/images/".$imgname);
+                    }
+                    $imgid = $this->manager->maxId();
+                    $imgname = $imgid.$_FILES["img"]["name"];
+                    move_uploaded_file($_FILES["img"]["tmp_name"], "../public/images/".$imgname);
+                }
+                $this->manager->update($imgname);
+                header("Location: /");
+            } else {
+                header("Location: /update/".$_POST["articleId"]);
+            }
         }
     }
 ?>
