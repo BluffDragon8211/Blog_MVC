@@ -2,68 +2,70 @@
     namespace BlogMvc\Models;
 
     class Article{
-        private $Id;
-        private $Titre;
-        private $Description;
-        private $Image;
-        private $Date;
-        private $Auteur;
-        private $auteurName;
+        private int $Id;
+        private string $Titre;
+        private string $Description;
+        private string $Image;
+        private string $Date;
+        private string $Auteur;
+        private string $AuteurName;
 
-        public function getId() {
+        //Accesseurs
+
+        public function getId(): int {
             return $this->Id;
         }
 
-        public function setId($id) {
+        public function setId(int $id): void {
             $this->Id = $id;
         }
 
-        public function getTitre() {
+        public function getTitre(): string {
             return $this->Titre;
         }
 
-        public function setTitre($titre) {
+        public function setTitre(string $titre): void {
             $this->Titre = $titre;
         }
 
-        public function getDescription() {
+        public function getDescription(): string {
             return $this->Description;
         }
 
-        public function setDescription($description) {
+        public function setDescription(string $description): void {
             $this->Description = $description;
         }
 
-        public function getImage() {
+        public function getImage(): string {
             return $this->Image;
         }
 
-        public function setImage($image) {
+        public function setImage(string $image): void {
             $this->Image = $image;
         }
 
-        public function getDate() {
+        public function getDate(): string {
             return $this->Date;
         }
 
-        public function setDate($date) {
+        public function setDate(string $date): void {
             $this->Date = $date;
         }
 
-        public function getAuteur() {
+        public function getAuteur(): string {
             return $this->Auteur;
         }
 
-        public function setAuteur($auteur) {
+        public function setAuteur(string $auteur): void {
             $this->Auteur = $auteur;
         }
 
-        public function getAuteurName() {
-            return $this->auteurName;
+        public function getAuteurName(): string {
+            return $this->AuteurName;
         }
 
-        public function setAuteurName($name) {
-            $this->auteurName = $name;
+        public function setAuteurName(string $name): void {
+            $this->AuteurName = $name;
         }
     }
 ?>

@@ -4,31 +4,32 @@ namespace BlogMvc\Models;
 /** Class User **/
 class User {
 
-    private $Id_auteur;
-    private $Login;
-    private $Motdepasse;
+    private string $Id_auteur;//Unique Id
+    private string $Login;
+    private string $Motdepasse;
 
-    public function getLogin() {
+    //accesseurs
+    public function getId_auteur(): string {
+        return $this->Id_auteur;
+    }
+    
+    public function getLogin(): string {
         return $this->Login;
     }
 
-    public function getMotdepasse() {
+    public function getMotdepasse(): string {
         return $this->Motdepasse;
     }
 
-    public function getId_auteur() {
-        return $this->Id_auteur;
+    public function setId_auteur(int $id) {
+        $this->Id_auteur = $id;
     }
 
-    public function setLogin(String $username) {
+    public function setLogin(string $username) {
         $this->Login = $username;
     }
 
-    public function setMotdepasse(String $password) {
+    public function setMotdepasse(string $password) {
         $this->Motdepasse = $password;
-    }
-
-    public function setId_auteur(Int $id) {
-        $this->Id_auteur = $id;
     }
 }

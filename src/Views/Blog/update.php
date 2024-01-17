@@ -1,5 +1,6 @@
 <?php
     ob_start();
+    //Les ternaires sont la à cause de l'autocomplete du formulaire, en effet il faut savoir si on doit completer avec le old ou avec le $article
 ?>
 <h2>Modifier l'article</h2>
 <form action="/update/" method="POST" enctype="multipart/form-data">

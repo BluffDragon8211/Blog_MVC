@@ -12,6 +12,7 @@
     <header>
         <nav>
             <?php
+                //Affiche une nav avec des options differentes suivant le login
                 if (!isset($_SESSION["user"]["username"])) {
                     ?>
                         <a href="/" class="logo">LOGO</a>
@@ -54,7 +55,7 @@
     </header>
 
     <main>
-        <?php echo $content;?>
+        <?php echo $content;/*Affiche les vues*/?>
     </main>
 </body>
 </html>
