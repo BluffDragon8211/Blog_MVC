@@ -74,18 +74,21 @@
 
         //Methode de supression d'articles
         public function delete(int $id): void {
-            //Récupère les infos d'un article en passant l'id
-            $article = $this->manager->getById($id);
-            //Vérifie si l'article existe
-            if(isset($article)) {
-                //Verifie si le mot de passe est correct
-                if($article["Auteur"] === $_SESSION["user"]["id"]) {
-                    //Suprime l'image du dossier images si elle existe
-                    if(file_exists("../public/images/".$article["Image"])) {
-                        unlink("../public/images/".$article["Image"]);
+            //Vérifie le login
+            if(isset($_SESSION["user"]["id"])) {
+                //Récupère les infos d'un article en passant l'id
+                $article = $this->manager->getById($id);
+                //Vérifie si l'article existe
+                if(isset($article)) {
+                    //Verifie si le mot de passe est correct
+                    if($article["Auteur"] === $_SESSION["user"]["id"]) {
+                        //Suprime l'image du dossier images si elle existe
+                        if(file_exists("../public/images/".$article["Image"])) {
+                            unlink("../public/images/".$article["Image"]);
+                        }
+                        //Suprimme l'article en bdd
+                        $this->manager->delete($id);
                     }
-                    //Suprimme l'article en bdd
-                    $this->manager->delete($id);
                 }
             }
             //Redirige vers l'affichage

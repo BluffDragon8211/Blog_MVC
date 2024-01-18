@@ -35,7 +35,7 @@ class Validator {
         "alpha" => "#^[A-z]+$#",
         "alphaNum" => "#^[A-z0-9]+$#",
         "alphaNumDash" => "#^[A-z0-9-\|]+$#",
-        "alphaSpaceAccent" => "#^[A-z \p{L}]+$#u",
+        "alphaSpaceAccent" => "#^[A-z À-ú]+$#",
         "numeric" => "#^[0-9]+$#",
         "confirm" => ""
     ];
