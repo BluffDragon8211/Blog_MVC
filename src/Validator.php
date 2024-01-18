@@ -19,7 +19,7 @@ class Validator {
         "alpha" => "Le champ peut contenir que des lettres minuscules et majuscules !",
         "alphaNum" => "Le champ peut contenir que des lettres minuscules, majuscules et des chiffres !",
         "alphaNumDash" => "Le champ peut contenir que des lettres minuscules, majuscules, des chiffres, des slash et des tirets !",
-        "alphaSpaceAccent" => "Le champ peut contenir que des lettres minuscules, majuscules, avec accent ou des espaces",
+        "alphaSpaceAccent" => "Le champ peut contenir que des lettres minuscules, majuscules, avec accent ou des espaces !",
         "numeric" => "Le champ peut contenir que des chiffres !",
         "confirm" => "Le champs n'est pas conforme au confirm !"
     ];
