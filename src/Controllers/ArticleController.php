@@ -50,7 +50,7 @@
             $_POST["commentaire"] = escape($_POST["commentaire"]);
             //Valider les champs
             $this->validator->validate([
-                "titre"=>["required", "min:2", "max:50"],
+                "titre"=>["required", "min:2", "max:50", "alphaSpaceAccent"],
                 "commentaire"=>["required", "min:2"]
             ]);
             //Stocker en old
@@ -104,7 +104,7 @@
             $_POST["commentaire"] = escape($_POST["commentaire"]);
             //Valide les champs
             $this->validator->validate([
-                "titre"=>["required", "min:2", "max:50"],
+                "titre"=>["required", "min:2", "max:50", "alphaSpaceAccent"],
                 "commentaire"=>["required", "min:2"]
             ]);
             //Stocke en old
