@@ -12,14 +12,22 @@
             $this->validator = new Validator();
         }
 
-        //Methode qui appele la vue login
+        //Methode qui appele la vue login si on est pas logué
         public function showLogin(): void {
-            require VIEWS . 'Auth/login.php';
+            if(!isset($_SESSION["user"]["id"])) {
+                require VIEWS . 'Auth/login.php';
+            } else {
+                header("Location: /");
+            }
         }
 
-        //Methode qui appelle la vue register
+        //Methode qui appelle la vue register si on est pas logué
         public function showRegister(): void {
-            require VIEWS . 'Auth/register.php';
+            if(!isset($_SESSION["user"]["id"])) {
+                require VIEWS . 'Auth/register.php';
+            } else {
+                header("Location: /");
+            }
         }
 
         //Methode qui suprime la session

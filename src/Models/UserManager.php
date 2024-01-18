@@ -26,7 +26,7 @@ class UserManager {
     }
 
     //Methode qui retourne l'auteur de nom $username
-    public function find(string $username): User {
+    public function find(string $username): User|bool {
         $stmt = $this->bdd->prepare("SELECT * FROM login_motdepasse WHERE Login LIKE ?");
         $stmt->execute(array(
             $username
